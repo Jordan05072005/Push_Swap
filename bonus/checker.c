@@ -82,7 +82,10 @@ int	main(int argc, char **argv)
 	}
 	err = read_instr(&pile);
 	if (err)
+	{
 		write(2, "Error\n", 6);
+		return (1);
+	}
 	if (is_sort(pile->pilea, pile->max_pile))
 		write(1, "OK\n", 3);
 	else
