@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	swap(t_pile **p, char select)
+void	swap(t_pile **p, char select, int print)
 {
 	int		temp;
 	int		first;
@@ -33,10 +33,11 @@ void	swap(t_pile **p, char select)
 		(*p)->pileb[first] = (*p)->pileb[first + 1];
 		(*p)->pileb[first + 1] = temp;
 	}
-	ft_printf("s%c\n", select);
+	if (print)
+		ft_printf("s%c\n", select);
 }
 
-void	push(t_pile **p, char select)
+void	push(t_pile **p, char select, int print)
 {
 	if (select == 'a' && (*p)->pileb)
 	{
@@ -50,10 +51,11 @@ void	push(t_pile **p, char select)
 			= (*p)->pilea[first_elem((*p)->pilea, (*p)->max_pile)];
 		(*p)->pilea[first_elem((*p)->pilea, (*p)->max_pile)] = 0;
 	}
-	ft_printf("p%c\n", select);
+	if (print)
+		ft_printf("p%c\n", select);
 }
 
-void	rotate(t_pile **p, char select)
+void	rotate(t_pile **p, char select, int print)
 {
 	int		temp;
 	int		first;
@@ -75,10 +77,11 @@ void	rotate(t_pile **p, char select)
 		ft_memmove((*p)->pileb + first, (*p)->pileb + first + 1, size);
 		(*p)->pileb[(*p)->max_pile - 1] = temp;
 	}
-	ft_printf("r%c\n", select);
+	if (print)
+		ft_printf("r%c\n", select);
 }
 
-void	reverse_rotate(t_pile **p, char select)
+void	reverse_rotate(t_pile **p, char select, int print)
 {
 	int		temp;
 	int		first;
@@ -100,6 +103,6 @@ void	reverse_rotate(t_pile **p, char select)
 		ft_memmove((*p)->pileb + first + 1, (*p)->pileb + first, size);
 		(*p)->pileb[first] = temp;
 	}
-	return ;
-	ft_printf("rr%c\n", select);
+	if (print)
+		ft_printf("rr%c\n", select);
 }

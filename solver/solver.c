@@ -45,36 +45,46 @@ int	*smallest_push(int *a, int *b, int first, int max_p)
 void	imple_instr(t_pile **p, int insta, int instb)
 {
 	if (insta > 0 && instb > 0)
-		return (rotate(p, 'r'), imple_instr(p, insta - 1, instb - 1));
+		return (rotate(p, 'r', 1), imple_instr(p, insta - 1, instb - 1));
 	else if (insta < 0 && instb < 0)
-		return (reverse_rotate(p, 'r'), imple_instr(p, insta + 1, instb + 1));
+		return (reverse_rotate(p, 'r', 1), imple_instr(p, insta + 1, instb + 1));
 	else if (insta > 0)
-		return (rotate(p, 'a'), imple_instr(p, insta - 1, instb));
+		return (rotate(p, 'a', 1), imple_instr(p, insta - 1, instb));
 	else if (insta < 0)
-		return (reverse_rotate(p, 'a'), imple_instr(p, insta + 1, instb));
+		return (reverse_rotate(p, 'a', 1), imple_instr(p, insta + 1, instb));
 	else if (instb > 0)
-		return (rotate(p, 'b'), imple_instr(p, insta, instb - 1));
+		return (rotate(p, 'b', 1), imple_instr(p, insta, instb - 1));
 	else if (instb < 0)
-		return (reverse_rotate(p, 'b'), imple_instr(p, insta, instb + 1));
+		return (reverse_rotate(p, 'b', 1), imple_instr(p, insta, instb + 1));
 }
 
 void	sort_little(t_pile **p, int max_p)
 {
+	int	temp;
+	int	firsta;
+
 	if (max_p == 1)
 		return ;
 	else if (max_p == 2 && !is_sort((*p)->pilea, (*p)->max_pile))
-		swap(p, 'a');
+		swap(p, 'a', 1);
 	else if (max_p == 3 && !is_sort((*p)->pilea, (*p)->max_pile))
 	{
 		if (!is_near_sort((*p)->pilea, (*p)->max_pile))
-			swap(p, 'a');
+			swap(p, 'a', 1);
 		while (!is_sort((*p)->pilea, (*p)->max_pile))
-			rotate(p, 'a');
+			rotate(p, 'a', 1);
 	}
 	else if (is_near_sort((*p)->pilea, (*p)->max_pile))
 	{
+		firsta = first_elem((*p)->pilea, (*p)->max_pile);
+		temp = index_min((*p)->pileb, firsta, (*p)->max_pile);
 		while (!is_sort((*p)->pilea, (*p)->max_pile))
-			rotate(p, 'a');
+		{
+			if (temp < (*p)->max_pile / 2)
+				rotate(p, 'a', 1);
+			else
+				reverse_rotate(p, 'a', 1);
+		}
 	}
 }
 
@@ -93,7 +103,7 @@ void	sort2(t_pile **p)
 		index = up_nbr(firsts, (*p)->max_pile, temp, firsts[1]);
 		imple_instr(p, index[0], index[1]);
 		free(index);
-		push(p, 'a');
+		push(p, 'a', 1);
 	}
 	sort_little(p, (*p)->max_pile);
 }
@@ -103,38 +113,33 @@ void	sort(t_pile **p)
 	int	*index;
 	int	firsta;
 	int	firstb;
-	int	temp;
+	int	min;
 
-	push(p, 'b');
-	push(p, 'b');
+	push(p, 'b', 1);
+	push(p, 'b', 1);
 	while (len_pile((*p)->pilea, (*p)->max_pile) > 3)
 	{
 		firsta = first_elem((*p)->pilea, (*p)->max_pile);
 		index = smallest_push((*p)->pilea, (*p)->pileb, firsta, (*p)->max_pile);
 		imple_instr(p, index[0], index[1]);
-		push(p, 'b');
+		push(p, 'b', 1);
 		free(index);
 	}
 	firstb = first_elem((*p)->pileb, (*p)->max_pile);
+	min = index_max((*p)->pileb, firstb, (*p)->max_pile);
 	while (index_max((*p)->pileb, firstb, (*p)->max_pile) != firstb)
-		rotate(p, 'b');
+	{
+		if (min < (*p)->max_pile / 2)
+			rotate(p, 'b', 1);
+		else
+			reverse_rotate(p, 'b', 1);
+	}
 	if (!is_near_sort((*p)->pilea, (*p)->max_pile))
-		swap(p, 'a');
+		swap(p, 'a', 1);
 	sort2(p);
 }
 
 /*
-void	print(int *pile, int longu, char p) // a suppp
-{
-	int	i = 0;
-
-	while (i < longu)
-	{
-		printf("%c : %d\n", p, pile[i]);
-		i++;
-	}
-	printf("\n");
-}
 
 #include <stdio.h>
 
@@ -153,7 +158,7 @@ int	is(int *pile, int max, int nbr)
 
 int main(void)
 {	
-	int	max_pile = 500;
+	int	max_pile = 100;
 	int i = 0;
 	int nbr;
 	t_pile *p;
@@ -171,4 +176,5 @@ int main(void)
 	//print(p->pilea, p->max_pile, 'a');
 	if (is_sort(p->pilea, p->max_pile))
 		printf("gg");
-}*/
+}
+*/

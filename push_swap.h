@@ -15,8 +15,10 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include "utils/ft_printf/ft_printf.h"
 # include "utils/libft/libft.h"
+# include "utils/get_next_line/get_next_line.h"
 # define INTX "2147483647"
 # define INTM "-2147483648"
 
@@ -28,7 +30,10 @@ typedef struct s_pile
 	struct s_pile	*next;
 }					t_pile;
 
-//SOLVER
+//checker.c
+int	read_instr(t_pile **p);
+int	apply_inst(t_pile **p, char *str);
+
 //up_value.c
 int		ft_max(int a, int b);
 void	sum_max(int nbr1, int nbr2, int sum, int *small_d);
@@ -62,10 +67,10 @@ int		strstrlen(char **str);
 t_pile	*ft_pilenew(size_t max_pile);
 
 //instruction.c
-void	swap(t_pile **p, char select);
-void	push(t_pile **p, char select);
-void	rotate(t_pile **p, char select);
-void	reverse_rotate(t_pile **p, char select);
+void	swap(t_pile **p, char select, int print);
+void	push(t_pile **p, char select, int print);
+void	rotate(t_pile **p, char select, int print);
+void	reverse_rotate(t_pile **p, char select, int print);
 
 //free.c
 void	free_lststr(char **str);
