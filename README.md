@@ -1,7 +1,7 @@
 # Push_Swap
 
 ## What's the goal of the project ?
-Push Swap is a project by École 42. The aim is to sort a stack of numbers, with pre-defined instructions and using as few instructions as possible.
+Push Swap is a project by 42. The aim is to sort a stack of numbers, with pre-defined instructions and using as few instructions as possible.
 
 ### Instruction :
 
