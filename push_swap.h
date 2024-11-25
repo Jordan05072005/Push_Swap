@@ -33,8 +33,8 @@ typedef struct s_pile
 }					t_pile;
 
 //checker.c
-int	read_instr(t_pile **p);
-int	apply_inst(t_pile **p, char *str);
+int		read_instr(t_pile **p);
+int		apply_inst(t_pile **p, char *str);
 
 //up_value.c
 int		ft_max(int a, int b);

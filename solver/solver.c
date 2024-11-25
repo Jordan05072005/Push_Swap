@@ -49,7 +49,8 @@ void	imple_instr(t_pile **p, int insta, int instb)
 	if (insta > 0 && instb > 0)
 		return (rotate(p, 'r', 1), imple_instr(p, insta - 1, instb - 1));
 	else if (insta < 0 && instb < 0)
-		return (reverse_rotate(p, 'r', 1), imple_instr(p, insta + 1, instb + 1));
+		return (reverse_rotate(p, 'r', 1),
+			imple_instr(p, insta + 1, instb + 1));
 	else if (insta > 0)
 		return (rotate(p, 'a', 1), imple_instr(p, insta - 1, instb));
 	else if (insta < 0)
@@ -63,29 +64,16 @@ void	imple_instr(t_pile **p, int insta, int instb)
 void	sort_little(t_pile **p, int max_p)
 {
 	int	temp;
-	int	firsta;
 
-	firsta = (*p)->sa;
 	if (max_p == 1)
 		return ;
 	else if (max_p == 2 && !is_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
 		swap(p, 'a', 1);
-	else if (max_p == 3 && !is_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
+	else if (!is_near_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
 	{
-		if (!is_near_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
+		if (max_p == 3 && !is_near_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
 			swap(p, 'a', 1);
-		temp = index_min((*p)->pilea, firsta, (*p)->max_pile);
-		while (!is_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
-		{
-			if (temp < (*p)->max_pile / 2)
-				rotate(p, 'a', 1);
-			else
-				reverse_rotate(p, 'a', 1);
-		}
-	}
-	else if (is_near_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
-	{
-		temp = index_min((*p)->pilea, firsta, (*p)->max_pile);
+		temp = index_min((*p)->pilea, (*p)->sa, (*p)->max_pile);
 		while (!is_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
 		{
 			if (temp < (*p)->max_pile / 2)

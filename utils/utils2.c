@@ -24,7 +24,6 @@ int	strstrlen(char **str)
 
 int	is_sort(int *pile, int max_pile, int i)
 {
-
 	int	j;
 
 	while (i < max_pile)

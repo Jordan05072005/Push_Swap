@@ -24,7 +24,7 @@ void	swap(t_pile **p, char select, int print)
 		(*p)->pilea[(*p)->sa + 1] = temp;
 	}
 	if ((select == 'b' || select == 's')
-		&&(*p)->max_pile - (*p)->sb >= 2)
+		&& (*p)->max_pile - (*p)->sb >= 2)
 	{
 		temp = (*p)->pileb[(*p)->sb];
 		(*p)->pileb[(*p)->sb] = (*p)->pileb[(*p)->sb + 1];
