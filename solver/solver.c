@@ -69,7 +69,7 @@ void	sort_little(t_pile **p, int max_p)
 		return ;
 	else if (max_p == 2 && !is_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
 		swap(p, 'a', 1);
-	else if (!is_near_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
+	if (is_near_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
 	{
 		if (max_p == 3 && !is_near_sort((*p)->pilea, (*p)->max_pile, (*p)->sa))
 			swap(p, 'a', 1);

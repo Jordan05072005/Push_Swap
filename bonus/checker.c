@@ -52,6 +52,11 @@ int	read_instr(t_pile **p)
 	{
 		if (str[0] == EOF)
 			break ;
+		if (str[ft_strlen(str) - 2] == 32)
+		{
+			free(str);
+			return (1);
+		}
 		err = apply_inst(p, str);
 		free(str);
 		if (err)
