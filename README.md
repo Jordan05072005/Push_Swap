@@ -24,7 +24,7 @@ My algorithm works in several stages:
 
 -We start by ‘pushing’ 2 elements (as a base for b)
 
-![image](https://github.com/user-attachments/assets/e400c1fa-5056-4c60-9b16-491163667b33 | width=100)
+![image](https://github.com/user-attachments/assets/e400c1fa-5056-4c60-9b16-491163667b33 )
 
 -Then, for each number in a, we calculate the number of instructions needed to push the number to b, with the number directly below it at the top of the b stack (for example: if the number for which we want to calculate the number of instructions is 4, we'll try to put the number 3 at the top of the b stack, not 2.
 
