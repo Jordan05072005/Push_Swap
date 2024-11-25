@@ -3,7 +3,7 @@
 ## What's the goal of the project ?
 Push Swap is a project by École 42. The aim is to sort a stack of numbers, with pre-defined instructions and using as few instructions as possible.
 
-### Instruction
+### Instruction :
 
 | Code  | Instruction                         | Action                                                 |
 | ----- | ----------------------------------- | ------------------------------------------------------ |
@@ -18,6 +18,8 @@ Push Swap is a project by École 42. The aim is to sort a stack of numbers, with
 | `rra` | reverse rotate a                    | shifts all elements of stack a from top to bottom      |
 | `rrb` | reverse rotate b                    | shifts all elements of stack b from top to bottom      |
 | `rrr` | reverse rotate a + reverse rotate b | both `rra` and `rrb`                                   |
+
+![image](https://github.com/user-attachments/assets/364628ea-39f6-4282-b17d-7237a2a99fba)
 
 ## What's the algorithme i'm us ?
 My algorithm works in several stages.
