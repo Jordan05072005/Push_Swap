@@ -19,11 +19,21 @@ Push Swap is a project by École 42. The aim is to sort a stack of numbers, with
 | `rrb` | reverse rotate b                    | shifts all elements of stack b from top to bottom      |
 | `rrr` | reverse rotate a + reverse rotate b | both `rra` and `rrb`                                   |
 
-![image](https://github.com/user-attachments/assets/364628ea-39f6-4282-b17d-7237a2a99fba)
-
 ## What's the algorithme i'm us ?
 My algorithm works in several stages.
 -We start by ‘pushing’ 2 elements (as a base for b)
+
+![image](https://github.com/user-attachments/assets/e400c1fa-5056-4c60-9b16-491163667b33)
+
 -Then, for each number in a, we calculate the number of instructions needed to push the number to b, with the number directly below it at the top of the b stack (for example: if the number for which we want to calculate the number of instructions is 4, we'll try to put the number 3 at the top of the b stack, not 2.
+
+![image](https://github.com/user-attachments/assets/15255779-9e71-40a8-b6b0-8f03b16bc3dd)
+
 -Then we apply the instructions with the smallest sum. And we repeat until the a stack contains only 3 numbers.
+
+![image](https://github.com/user-attachments/assets/60ca1ddb-3485-4b30-b3c5-cb68b01d14b7)
+
 -Then, with a single instruction, we sort a, then gradually put the numbers from a back into b (as b is sorted, it's simpler).
+
+![image](https://github.com/user-attachments/assets/28c81681-6c88-4b7a-9c62-429dcddaf6af)
+
