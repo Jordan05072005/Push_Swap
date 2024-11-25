@@ -36,5 +36,5 @@ My algorithm works in several stages:
 
 -Then, with a single instruction, we sort a, then gradually put the numbers from a back into b (as b is sorted, it's simpler).
 
-<img src="https://miro.medium.com/v2/resize:fit:750/format:webp/1*9Fu59uvnnFzh6062ARtSow.png" alt="C" height="100" />
+<img src="https://miro.medium.com/v2/resize:fit:750/format:webp/1*9Fu59uvnnFzh6062ARtSow.png" alt="C" width="200" height="200" />
 
