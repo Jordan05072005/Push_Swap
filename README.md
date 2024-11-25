@@ -20,7 +20,8 @@ Push Swap is a project by École 42. The aim is to sort a stack of numbers, with
 | `rrr` | reverse rotate a + reverse rotate b | both `rra` and `rrb`                                   |
 
 ## What's the algorithme i'm us ?
-My algorithm works in several stages.
+My algorithm works in several stages:
+
 -We start by ‘pushing’ 2 elements (as a base for b)
 
 ![image](https://github.com/user-attachments/assets/e400c1fa-5056-4c60-9b16-491163667b33)
