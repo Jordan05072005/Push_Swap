@@ -50,7 +50,7 @@ int	read_instr(t_pile **p)
 	str = get_next_line(1);
 	while (str != NULL)
 	{
-		if (str[0] == '\n')
+		if (str[0] == EOF)
 			break ;
 		err = apply_inst(p, str);
 		free(str);
@@ -67,10 +67,7 @@ int	main(int argc, char **argv)
 	int		err;
 
 	if (argc < 2)
-	{
-		write(2, "Error\n", 6);
 		return (0);
-	}
 	else if (argc == 2)
 		pile = parsing(ft_split(argv[1], ' '), argc - 1, 1);
 	else
@@ -86,7 +83,7 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	if (is_sort(pile->pilea, pile->max_pile))
+	if (is_sort(pile->pilea, pile->max_pile, pile->sa))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);

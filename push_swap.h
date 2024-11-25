@@ -26,6 +26,8 @@ typedef struct s_pile
 {
 	int				*pilea;
 	int				*pileb;
+	int				sa;
+	int				sb;
 	int				max_pile;
 	struct s_pile	*next;
 }					t_pile;
@@ -40,7 +42,7 @@ void	sum_max(int nbr1, int nbr2, int sum, int *small_d);
 int		*up_nbr(int *first, int max_p, int index_a, int index_b);
 
 //solver.c
-int		*smallest_push(int *a, int *b, int first, int max_p);
+int		*smallest_push(t_pile **p, int *a, int *b, int first);
 void	imple_instr(t_pile **p, int insta, int instb);
 void	sort2(t_pile **p);
 void	sort(t_pile **a);
@@ -53,16 +55,15 @@ int		is_number(char **str);
 int		is_valid(char **str, int word, int nbr);
 
 // utils.c
-int		len_pile(int *pile, int max_pile);
+int		len_pile(t_pile **p, char select);
 int		index_min(int *pile, int first, int max_pile);
 int		index_max(int *pile, int first, int max_pile);
 int		index_max_inf(int *pile, int first, int index, int max_pile);
 int		index_min_sup(int *pile, int first_p, int nbr, int max_pile);
 
 //utils2.c
-int		first_elem(int *pile, int max_pile);
-int		is_near_sort(int *pile, int max_pile);
-int		is_sort(int *pile, int max_pile);
+int		is_near_sort(int *pile, int max_pile, int i);
+int		is_sort(int *pile, int max_pile, int first);
 int		strstrlen(char **str);
 t_pile	*ft_pilenew(size_t max_pile);
 

@@ -15,23 +15,20 @@
 void	swap(t_pile **p, char select, int print)
 {
 	int		temp;
-	int		first;
 
-	first = first_elem((*p)->pilea, (*p)->max_pile);
 	if ((select == 'a' || select == 's')
-		&& (*p)->pilea[first] && (*p)->pilea[first + 1])
+		&& (*p)->max_pile - (*p)->sa >= 2)
 	{
-		temp = (*p)->pilea[first];
-		(*p)->pilea[first] = (*p)->pilea[first + 1];
-		(*p)->pilea[first + 1] = temp;
+		temp = (*p)->pilea[(*p)->sa];
+		(*p)->pilea[(*p)->sa] = (*p)->pilea[(*p)->sa + 1];
+		(*p)->pilea[(*p)->sa + 1] = temp;
 	}
-	first = first_elem((*p)->pileb, (*p)->max_pile);
 	if ((select == 'b' || select == 's')
-		&& (*p)->pileb[first] && (*p)->pileb[first + 1])
+		&&(*p)->max_pile - (*p)->sb >= 2)
 	{
-		temp = (*p)->pileb[first];
-		(*p)->pileb[first] = (*p)->pileb[first + 1];
-		(*p)->pileb[first + 1] = temp;
+		temp = (*p)->pileb[(*p)->sb];
+		(*p)->pileb[(*p)->sb] = (*p)->pileb[(*p)->sb + 1];
+		(*p)->pileb[(*p)->sb + 1] = temp;
 	}
 	if (print)
 		ft_printf("s%c\n", select);
@@ -39,17 +36,21 @@ void	swap(t_pile **p, char select, int print)
 
 void	push(t_pile **p, char select, int print)
 {
-	if (select == 'a' && (*p)->pileb)
+	if (select == 'a' && (*p)->sb != (*p)->max_pile)
 	{
-		(*p)->pilea[first_elem((*p)->pilea, (*p)->max_pile) - 1]
-			= (*p)->pileb[first_elem((*p)->pileb, (*p)->max_pile)];
-		(*p)->pileb[first_elem((*p)->pileb, (*p)->max_pile)] = 0;
+		(*p)->pilea[(*p)->sa - 1]
+			= (*p)->pileb[(*p)->sb];
+		(*p)->pileb[(*p)->sb] = 0;
+		(*p)->sa--;
+		(*p)->sb++;
 	}
-	if (select == 'b' && (*p)->pilea)
+	if (select == 'b' && (*p)->sa != (*p)->max_pile)
 	{
-		(*p)->pileb[first_elem((*p)->pileb, (*p)->max_pile) - 1]
-			= (*p)->pilea[first_elem((*p)->pilea, (*p)->max_pile)];
-		(*p)->pilea[first_elem((*p)->pilea, (*p)->max_pile)] = 0;
+		(*p)->pileb[(*p)->sb - 1]
+			= (*p)->pilea[(*p)->sa];
+		(*p)->pilea[(*p)->sa] = 0;
+		(*p)->sb--;
+		(*p)->sa++;
 	}
 	if (print)
 		ft_printf("p%c\n", select);
@@ -63,7 +64,7 @@ void	rotate(t_pile **p, char select, int print)
 
 	if (select == 'a' || select == 'r')
 	{
-		first = first_elem((*p)->pilea, (*p)->max_pile);
+		first = (*p)->sa;
 		size = sizeof(int) * ((*p)->max_pile - 1 - first);
 		temp = (*p)->pilea[first];
 		ft_memmove((*p)->pilea + first, (*p)->pilea + first + 1, size);
@@ -71,7 +72,7 @@ void	rotate(t_pile **p, char select, int print)
 	}
 	if (select == 'r' || select == 'b')
 	{
-		first = first_elem((*p)->pileb, (*p)->max_pile);
+		first = (*p)->sb;
 		size = sizeof(int) * ((*p)->max_pile - 1 - first);
 		temp = (*p)->pileb[first];
 		ft_memmove((*p)->pileb + first, (*p)->pileb + first + 1, size);
@@ -89,7 +90,7 @@ void	reverse_rotate(t_pile **p, char select, int print)
 
 	if (select == 'a' || select == 'r')
 	{
-		first = first_elem((*p)->pilea, (*p)->max_pile);
+		first = (*p)->sa;
 		size = sizeof(int) * ((*p)->max_pile - 1 - first);
 		temp = (*p)->pilea[(*p)->max_pile - 1];
 		ft_memmove((*p)->pilea + first + 1, (*p)->pilea + first, size);
@@ -97,7 +98,7 @@ void	reverse_rotate(t_pile **p, char select, int print)
 	}
 	if (select == 'b' || select == 'r')
 	{
-		first = first_elem((*p)->pileb, (*p)->max_pile);
+		first = (*p)->sb;
 		size = sizeof(int) * ((*p)->max_pile - 1 - first);
 		temp = (*p)->pileb[(*p)->max_pile - 1];
 		ft_memmove((*p)->pileb + first + 1, (*p)->pileb + first, size);

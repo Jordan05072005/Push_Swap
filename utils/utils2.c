@@ -12,20 +12,6 @@
 
 #include "../push_swap.h"
 
-int	first_elem(int *pile, int max_pile)
-{
-	int	i;
-
-	i = 0;
-	while (i < max_pile)
-	{
-		if (pile[i] != 0)
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
 int	strstrlen(char **str)
 {
 	int	i;
@@ -36,12 +22,11 @@ int	strstrlen(char **str)
 	return (i);
 }
 
-int	is_sort(int *pile, int max_pile)
+int	is_sort(int *pile, int max_pile, int i)
 {
-	int	i;
+
 	int	j;
 
-	i = first_elem(pile, max_pile);
 	while (i < max_pile)
 	{
 		j = i;
@@ -56,16 +41,16 @@ int	is_sort(int *pile, int max_pile)
 	return (1);
 }
 
-int	is_near_sort(int *pile, int max_pile)
+int	is_near_sort(int *pile, int max_pile, int first)
 {
 	int	i;
 	int	min_temp;
 	int	min;
 
-	min = index_min(pile, first_elem(pile, max_pile), max_pile);
+	min = index_min(pile, first, max_pile);
 	i = min + 1;
 	if (i >= max_pile)
-		i = first_elem(pile, max_pile);
+		i = first;
 	min_temp = min;
 	while (i != min)
 	{
@@ -74,7 +59,7 @@ int	is_near_sort(int *pile, int max_pile)
 		min_temp = i;
 		i++;
 		if (i >= max_pile)
-			i = first_elem(pile, max_pile);
+			i = first;
 	}
 	return (1);
 }
@@ -89,6 +74,8 @@ t_pile	*ft_pilenew(size_t max_pile)
 	newpile->max_pile = max_pile;
 	newpile->pilea = ft_calloc(newpile->max_pile, sizeof(int));
 	newpile->pileb = ft_calloc(newpile->max_pile, sizeof(int));
+	newpile->sa = 0;
+	newpile->sb = max_pile;
 	newpile->next = NULL;
 	return (newpile);
 }

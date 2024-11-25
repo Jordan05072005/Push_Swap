@@ -12,20 +12,11 @@
 
 #include "../push_swap.h"
 
-int	len_pile(int *pile, int max_pile)
+int	len_pile(t_pile **p, char select)
 {
-	int	i;
-	int	comp;
-
-	i = 0;
-	comp = 0;
-	while (i < max_pile)
-	{
-		if (pile[i] != 0)
-			comp++;
-		i++;
-	}
-	return (comp);
+	if (select == 'a')
+		return ((*p)->max_pile - (*p)->sa);
+	return ((*p)->max_pile - (*p)->sb);
 }
 
 int	index_min(int *pile, int first, int max_pile)
@@ -35,7 +26,7 @@ int	index_min(int *pile, int first, int max_pile)
 	min = first;
 	while (first < max_pile)
 	{
-		if (pile[first] < pile[min] && pile[first] != 0)
+		if (pile[first] < pile[min])
 			min = first;
 		first++;
 	}
@@ -49,7 +40,7 @@ int	index_max(int *pile, int first, int max_pile)
 	max = first;
 	while (first < max_pile)
 	{
-		if (pile[first] > pile[max] && pile[first] != 0)
+		if (pile[first] > pile[max])
 			max = first;
 		first++;
 	}

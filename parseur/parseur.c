@@ -20,8 +20,6 @@ int	is_valid(char **str, int word, int nbr)
 	if (ft_strncmp(INTM, str[word], ft_strlen(str[word])) < 0
 		&& str[word][0] == '-' && ft_strlen(str[word]) >= 11)
 		return (0);
-	if (nbr == 0)
-		return (0);
 	return (1);
 }
 
