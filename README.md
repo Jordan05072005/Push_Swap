@@ -24,17 +24,17 @@ My algorithm works in several stages:
 
 -We start by ‘pushing’ 2 elements (as a base for b)
 
-![image](https://github.com/user-attachments/assets/e400c1fa-5056-4c60-9b16-491163667b33)  
+<img src="https://miro.medium.com/v2/resize:fit:622/format:webp/1*9I_8_h6j1-n0OMcwBgH6pg.png" alt="C" width="300" height="300" />
 
 -Then, for each number in a, we calculate the number of instructions needed to push the number to b, with the number directly below it at the top of the b stack (for example: if the number for which we want to calculate the number of instructions is 4, we'll try to put the number 3 at the top of the b stack, not 2.
 
-![image](https://github.com/user-attachments/assets/15255779-9e71-40a8-b6b0-8f03b16bc3dd)
+<img src="https://miro.medium.com/v2/resize:fit:622/format:webp/1*zi6IXFB5TQ5eYGjIujuLhA.png" alt="C" width="300" height="300" />
 
 -Then we apply the instructions with the smallest sum. And we repeat until the a stack contains only 3 numbers.
 
-![image](https://github.com/user-attachments/assets/60ca1ddb-3485-4b30-b3c5-cb68b01d14b7)
+<img src="https://miro.medium.com/v2/resize:fit:750/format:webp/1*_oYIpqiFDQTeZbbgpqFGGQ.png" alt="C" width="300" height="300" />
 
 -Then, with a single instruction, we sort a, then gradually put the numbers from a back into b (as b is sorted, it's simpler).
 
-<img src="https://miro.medium.com/v2/resize:fit:750/format:webp/1*9Fu59uvnnFzh6062ARtSow.png" alt="C" width="200" height="200" />
+<img src="https://miro.medium.com/v2/resize:fit:750/format:webp/1*9Fu59uvnnFzh6062ARtSow.png" alt="C" width="300" height="300" />
 
