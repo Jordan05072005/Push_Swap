@@ -24,8 +24,7 @@ My algorithm works in several stages:
 
 -We start by ‘pushing’ 2 elements (as a base for b)
 
-![image](https://github.com/user-attachments/assets/e400c1fa-5056-4c60-9b16-491163667b33)
-<img src="[https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png](https://github.com/user-attachments/assets/e400c1fa-5056-4c60-9b16-491163667b33)" width="200" height="400" />
+![image](https://github.com/user-attachments/assets/e400c1fa-5056-4c60-9b16-491163667b33)  
 
 -Then, for each number in a, we calculate the number of instructions needed to push the number to b, with the number directly below it at the top of the b stack (for example: if the number for which we want to calculate the number of instructions is 4, we'll try to put the number 3 at the top of the b stack, not 2.
 
@@ -37,5 +36,5 @@ My algorithm works in several stages:
 
 -Then, with a single instruction, we sort a, then gradually put the numbers from a back into b (as b is sorted, it's simpler).
 
-![image](https://github.com/user-attachments/assets/28c81681-6c88-4b7a-9c62-429dcddaf6af)
+![image](https://miro.medium.com/v2/resize:fit:750/format:webp/1*9Fu59uvnnFzh6062ARtSow.png | width = 100)
 
