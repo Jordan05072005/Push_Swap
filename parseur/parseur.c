@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-int	is_valid(char **str, int word, int nbr)
+int	is_valid(char **str, int word)
 {
 	if (ft_strncmp(INTX, str[word], ft_strlen(str[word])) < 0
 		&& str[word][0] != '-' && ft_strlen(str[word]) >= 10)
@@ -27,13 +27,11 @@ int	is_number(char **str)
 {
 	int		words;
 	int		letters;
-	long	nbr;
 
 	words = 0;
 	while (str[words] != 0)
 	{
 		letters = 0;
-		nbr = 0;
 		while (str[words][letters])
 		{
 			if (str[words][letters] == '-' || str[words][letters] == '+')
@@ -42,8 +40,7 @@ int	is_number(char **str)
 				return (0);
 			letters++;
 		}
-		nbr = ft_atoi(str[words]);
-		if (!is_valid(str, words, nbr))
+		if (!is_valid(str, words))
 			return (0);
 		words++;
 	}
@@ -74,10 +71,7 @@ int	is_unique(char **str, int *pile)
 t_pile	*parsing(char **pile, size_t max_pile, int split)
 {
 	t_pile	*pile_int;
-	int		i;
-	int		temp;
 
-	i = -1;
 	if (!pile[0])
 		return (0);
 	if (split)

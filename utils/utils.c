@@ -50,11 +50,8 @@ int	index_max(int *pile, int first, int max_pile)
 // Search and find for the largest number among the numbers less than a "nbr"
 int	index_max_inf(int *pile, int first_p, int nbr, int max_pile)
 {
-	int	compt;
 	int	max;
-	int	verr;
 
-	verr = 1;
 	max = index_max(pile, first_p, max_pile);
 	while (first_p < max_pile)
 	{
@@ -71,11 +68,8 @@ int	index_max_inf(int *pile, int first_p, int nbr, int max_pile)
 // among the numbers greater than a "nbr"
 int	index_min_sup(int *pile, int first_p, int nbr, int max_pile)
 {
-	int	compt;
 	int	min;
-	int	verr;
 
-	verr = 1;
 	min = index_min(pile, first_p, max_pile);
 	while (first_p < max_pile)
 	{

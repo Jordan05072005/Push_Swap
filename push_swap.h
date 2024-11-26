@@ -52,7 +52,7 @@ void	sort_little(t_pile **p, int max_p);
 t_pile	*parsing(char **pile, size_t max_pile, int split);
 int		is_unique(char **str, int *pile);
 int		is_number(char **str);
-int		is_valid(char **str, int word, int nbr);
+int		is_valid(char **str, int word);
 
 // utils.c
 int		len_pile(t_pile **p, char select);

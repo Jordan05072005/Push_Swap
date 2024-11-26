@@ -11,9 +11,14 @@ RM = rm -f
 
 FLAGS = -Wall -Wextra -Werror
 
+Fother = -no-pie
+
 OBJ = ${SRC:.c=.o}
 
 BONUS_OBJ = ${BONUS_SRC:.c=.o}
+
+.c.o:
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJ}
 	make -C utils/ft_printf
